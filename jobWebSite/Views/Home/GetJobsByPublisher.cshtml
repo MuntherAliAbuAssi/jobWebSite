@@ -1,0 +1,34 @@
+﻿@model IEnumerable<jobWebSite.Models.JobsViewModel>
+
+@{
+    ViewBag.Title = "GetJobsByPublisher";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<h2>GetJobsByPublisher</h2>
+
+@foreach (var gr in Model) // يذهب الى كل المجموعات
+{
+<h3>@gr.JobTitle</h3>  
+    <table class="table table-bordered table-hover">
+        <tr>
+            <th>اسم الباحث</th>
+            <th>نص الرسالة</th>
+            <th>تاريخ الإرسال</th>
+        </tr>
+        @foreach (var item in gr.Items)
+        {
+    <tr>
+        <td>
+            @item.user.UserName
+        </td>
+        <td>
+            @item.Message
+        </td>
+        <td>
+            @item.ApplyDate
+        </td>
+    </tr>
+        }
+    </table>
+}
